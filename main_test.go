@@ -8,7 +8,6 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	. "gopkg.in/check.v1"
-	"io"
 	"testing"
 )
 
@@ -25,7 +24,7 @@ type ApiTest interface {
 }
 func Test(t *testing.T) {
 	TestingT(t)
-	fmt.Println(loginData)
+	//fmt.Println(loginData)
 	// 协程处理 testing 框架
 	//获取loginData 以便于开启后续的测试任务
 	//for key,value := range loginData  {
@@ -33,17 +32,14 @@ func Test(t *testing.T) {
 	//}
 }
 
-type MySuite struct{}
 
+// 测试结构体
+type MySuite struct{}
 var _ = Suite(&MySuite{})
 
-func (s *MySuite) TestHelloWorld(c *C) {
-	c.Assert(42, Equals, 42)
-	c.Assert(io.ErrClosedPipe, ErrorMatches, "io: .*on closed pipe")
-	c.Check(42, Equals, 42)
-}
 // 调用 login test 初始化数据
 func (s *MySuite) SetUpSuite(c *C) {
+	fmt.Println("SetUp Start ...")
 	//增加配置文件
 	config, err := goconfig.LoadConfigFile("./config/test.ini")
 	common.IfError(err)
@@ -63,4 +59,8 @@ func (s *MySuite) SetUpSuite(c *C) {
 
 func (s *MySuite) TearDownSuite(c *C) {
 	fmt.Println("Tear Down Start ...")
+}
+
+func (s *MySuite) TestHelloWorld(c *C) {
+	module.Helloworld(c)
 }

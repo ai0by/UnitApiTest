@@ -23,7 +23,6 @@ type LoginReturnData struct {
 	Uid int `json:"uid"`
 }
 
-
 func (res RetData) CheckCodeEqual() error {
 	if res.Code == 0.00 {
 		IfError(errors.New("LoginTest 错误的返回信息 : " + res.Msg))

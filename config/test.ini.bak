@@ -5,5 +5,7 @@ username =
 password =
 port     =
 address  =
+database =
+charset  =
 [path]
 login = login
