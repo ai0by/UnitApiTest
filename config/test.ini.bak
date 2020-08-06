@@ -1,0 +1,9 @@
+[jcc]
+requestUrl =
+[mysql]
+username =
+password =
+port     =
+address  =
+[path]
+login = login
